@@ -1,0 +1,54 @@
+<table>
+	<tr>
+		<td>
+			<table>
+			<{foreach from=$images item=image}>
+				<tr><td><a><img onClick='displayImage("<{$image.main}>");' src='<{$image.thumb}>'></a></td></tr>
+			<{/foreach}>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr><td align='center'><img id='main_img' src='<{$images[0].main}>'></td></tr>
+				<tr><td>
+					<table class='outer'>
+					<tr><th colspan='2'><{$project_name}></th></tr>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_type}></td><td><{$project_type}></td></tr>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_location}></td><td><{$project_location}>&nbsp;<{$anchor}><img src='<{$xoops_url}>/modules/projects/images/map.gif' alt='<{$lang_map}>'></a></td></tr>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_status}></td><td><{$project_status}></td></tr>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_description}></td><td><{$project_description}></td></tr>
+					<{if $project_details}>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_details}></td><td><{$project_details}></td></tr>
+					<{/if}>
+					<{if $project_enrollment}>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_enrollment}></td><td><{$project_enrollment}></td></tr>
+					<{/if}>
+					<{if $project_salesinfo}>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_salesinfo}></td><td><{$project_salesinfo}></td></tr>
+					<{/if}>
+					<{if $project_rentinfo}>
+					<tr class='<{cycle values="even,odd"}>'><td><{$lang_project_rentinfo}></td><td><{$project_rentinfo}></td></tr>
+					<{/if}>
+					<tr></tr>
+					</table>
+				</td></tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<script type='text/javascript'>
+<!--
+// Image pre-loading
+<{foreach from=$images item=image}>
+image = new Image();
+image.src = "<{$image.main}>";
+<{/foreach}>
+
+function displayImage(image) {
+	var img;
+	img = document.getElementById('main_img');
+	img.src = image;
+}
+-->
+</script>

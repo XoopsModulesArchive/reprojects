@@ -1,0 +1,27 @@
+<h4><{$lang_projectlist}></h4>
+<form name="list_form" method='get' action='index.php'>
+<{$security_token}>
+<table class="outer">
+<tr><td>&nbsp;</td>
+<td><input type="text" name="project_name" value="<{$project_name}>"></td>
+<td>
+<select name="project_type">
+<{html_options options=$project_types selected=$project_type}>
+</select>
+</td>
+<td>
+<input type="submit" value="<{$lang_search}>">
+</td>
+</tr>
+</form>
+<tr><th>&nbsp;</th><th><{$lang_name}></th><th><{$lang_type}></th><th><{$lang_description}></th></tr>
+<{section name=i loop=$projects}>
+<tr class="<{cycle values="even,odd"}>">
+<td><{$projects[i].project_link}><{$projects[i].project_thumb}></a></td>
+<td><{$projects[i].project_name}></td>
+<td><{$projects[i].project_type}></td>
+<td><{$projects[i].project_description}></td>
+</tr>
+<{/section}>
+<tr><td colspan="4"><{$pagenav}></td></tr>
+</table>
